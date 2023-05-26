@@ -1,0 +1,4 @@
+torch~=1.8.1+cu111
+numpy~=1.19.5
+transformers~=4.5.1
+setuptools~=52.0.0
