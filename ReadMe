@@ -1,3 +1,1 @@
 use python run.py --dataset *NAME* to select dataset for training
-
-logs of all results are provided in /logs
