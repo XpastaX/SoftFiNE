@@ -63,8 +63,8 @@ class FiNEdataset(Dataset):
             processed_label += item['seq_idx_with_se'][0:self.max_len]
 
         # prepare multilabels
-        multi_label_flat = [self.data[idx]['multi_label_with_se_flat'] for idx in batch]
-        multi_label_idx = [self.data[idx]['multi_label_with_se'] for idx in batch]
+        # multi_label_flat = [self.data[idx]['multi_label_with_se_flat'] for idx in batch]
+        # multi_label_idx = [self.data[idx]['multi_label_with_se'] for idx in batch]
         # prepare tokenized texts
         text_split_list = [self.data[idx]['split_text'] for idx in batch]
         text_split_list_aug = [self.data[idx]['split_text_aug'] for idx in batch]
@@ -73,16 +73,16 @@ class FiNEdataset(Dataset):
         tokenized_aug = self.tokenizer(text_split_list_aug, padding=True, truncation=True, max_length=self.max_len,
                                        is_split_into_words=True, return_tensors="pt")
 
-        processed_multi_label_flat = []
-        processed_multi_label_idx = []
-        for item in multi_label_flat:
-            processed_multi_label_flat += item
-        for item in multi_label_idx:
-            processed_multi_label_idx += item
+        # processed_multi_label_flat = []
+        # processed_multi_label_idx = []
+        # for item in multi_label_flat:
+        #     processed_multi_label_flat += item
+        # for item in multi_label_idx:
+        #     processed_multi_label_idx += item
         samples = {
             'label_idx_list': label_idx_list,
-            'processed_multi_label_flat': torch.tensor(processed_multi_label_flat).float(),
-            'processed_multi_label_idx': torch.tensor(processed_multi_label_idx).long(),
+            # 'processed_multi_label_flat': torch.tensor(processed_multi_label_flat).float(),
+            # 'processed_multi_label_idx': torch.tensor(processed_multi_label_idx).long(),
             'processed_rel_label': torch.tensor(processed_rel_label),
             'processed_rel_preference': 0,
             'processed_label': torch.tensor(processed_label),
